@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="css/style.css">
     <title>Cajero Automatico</title>
 </head>
@@ -12,42 +13,155 @@
     <div class="container-fluid text-center">
         <div class="row">
             <div class="col" >
-                <div class="row" style="background-color: brown;">
-                    <div class="col-2">
-                        <p>a</p>
+                <div class="row p-4" style="background-color: grey;">
+                    <div class="col-2 mt-5">
+                        <div class="row row-cols-1 mt-5">
+                            <div class="col p-4 pt-4"></div>
+                            <div class="col">
+                                <div class="p-3 pt-3 ps-5 pb-2 border border-dark bg-secondary bg-gradient rounded-pill text-end icono-boton" onclick="SeleccionoOpcion(0)">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3 pt-3 ps-5 pb-2 border border-dark bg-secondary bg-gradient rounded-pill text-end icono-boton" onclick="SeleccionoOpcion(2)">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3 pt-3 ps-5 pb-2 border border-dark bg-secondary bg-gradient rounded-pill text-end icono-boton" onclick="SeleccionoOpcion(4);">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3 pt-3 ps-5 pb-2 border border-dark bg-secondary bg-gradient rounded-pill text-end icono-boton" onclick="SeleccionoOpcion(6)">
+                                    <i class="bi bi-box-arrow-right"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-8">
-                        <p>a</p>
+                    <div class="col-8 ">
+                        <div class="row row-cols-1">
+                            <div class="col">
+                                <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3" id="renglon1">Bienvenido al Cajero Automatico JS</div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-primary" id="renglon2">Inserte su tarjeta para comenzar</div>
+                            </div>
+                            <div class="col">
+                                <div class="row">
+                                    <div class="col" style="padding-right: 0;">
+                                        <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-start" id="columna1-1">&nbsp;</div>
+                                        <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-start" id="columna1-2">&nbsp;</div>
+                                        <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-start" id="columna1-3">&nbsp;</div>
+                                        <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-start" id="columna1-4">&nbsp;</div>
+                                    </div>
+                                    <div class="col" style="padding-left: 0;">
+                                        <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-end" id="columna2-1">&nbsp;</div>
+                                        <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-end" id="columna2-2">&nbsp;</div>
+                                        <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-end" id="columna2-3">&nbsp;</div>
+                                        <div class="p-3 pt-3 pb-3 border bg-light border-0 fs-3 text-end" id="columna2-4">&nbsp;</div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        
                     </div>
-                    <div class="col-2">
-                        <p>a</p>
+                    <div class="col-2 mt-5">
+                        <div class="row row-cols-1 mt-5">
+                            <div class="col p-4 pt-4"></div>
+                            <div class="col">
+                                <div class="p-3 pt-3 ps-3 pb-2 border border-dark bg-secondary bg-gradient rounded-pill text-start icono-boton"onclick="SeleccionoOpcion(1)">
+                                    <i class="bi bi-box-arrow-left"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3 pt-3 ps-3 pb-2 border border-dark bg-secondary bg-gradient rounded-pill text-start icono-boton"onclick="SeleccionoOpcion(3)">
+                                    <i class="bi bi-box-arrow-left"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3 pt-3 ps-3 pb-2 border border-dark bg-secondary bg-gradient rounded-pill text-start icono-boton"onclick="SeleccionoOpcion(5)">
+                                    <i class="bi bi-box-arrow-left"></i>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="p-3 pt-3 ps-3 pb-2 border border-dark bg-secondary bg-gradient rounded-pill text-start icono-boton"onclick="SeleccionoOpcion(7)">
+                                    <i class="bi bi-box-arrow-left"></i>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="row row-cols-4 p-5" style="background-color: red;">
+                <div class="row row-cols-4 p-5 bg-secondary">
                     <div class="col p-3">
-                        <div class="p-3 border bg-light">7</div>
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(7)">7</div>
                     </div>
                     <div class="col p-3">
-                        <div class="p-3 border bg-light">8</div>
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(8)">8</div>
                     </div>
                     <div class="col p-3">
-                        <div class="p-3 border bg-light">9</div>
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(9)">9</div>
                     </div>
                     <div class="col p-3">
-                        <div class="p-3 border bg-light"></div>
+                        <div class="p-3 border bg-light">Anular</div>
                     </div>
                     <div class="col p-3">
-                        <div class="p-3 border bg-light">5</div>
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(4)">4</div>
                     </div>
                     <div class="col p-3">
-                        <div class="p-3 border bg-light">6</div>
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(5)">5</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(6)">6</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light">Cancelar</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(1)">1</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(2)">2</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(3)">3</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light" onclick="Continuar();">Confirmar</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light">&nbsp;</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light" onclick="SeleccionoNumero(0)">0</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light">&nbsp;</div>
+                    </div>
+                    <div class="col p-3">
+                        <div class="p-3 border bg-light">&nbsp;</div>
                     </div>
                 </div>
             </div>
-            <div class="col" style="background-color: green;">
-                <p>asd</p>
+            <div class="col-3 w-25" style="background-color: green;">
+                <div class="row row-cols-1">
+                    <div class="col">
+                        <div class="p-3 border bg-light"></div>
+                    </div>
+                    <div class="col">
+                        <h2>Insertar Tarjeta</h2><br>
+                        <img src="img/ranura tarjeta.jpg" onclick="InsetarTarjeta();" class="ranura" alt="Ranura Tarjeta">
+                    </div>
+                    <div class="col">
+                        <div class="p-3 border bg-light"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
+    <script src="js/DB.js"></script>
+    <script src="js/cajero.js"></script>
 </body>
 </html>
