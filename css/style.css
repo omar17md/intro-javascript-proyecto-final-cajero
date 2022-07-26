@@ -7,6 +7,13 @@ body{
     width: 400px;
 }
 
+.tecla{
+    width: 100px;
+}
+
+.tecla-funcion{
+    width: 170px;
+}
 
 .icono-boton{
     font-size: 2em;

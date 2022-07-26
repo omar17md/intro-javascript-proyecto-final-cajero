@@ -58,12 +58,23 @@ function SeleccionoOpcion(opcion){
             LimpiarOpciones();
             renglon1.textContent = `Ingrese su NIP por favor`;
             renglon2.innerHTML = '&nbsp;';
+            columnas[5].textContent = 'Borrar';
+            columnas[6].textContent = 'Cancelar';
+            columnas[6].style.color = 'red';
             procedimiento++;
         }break;
 
         case 2:{
-            if(password.length == 4){
-                ValidarNIP(password);
+            if(opcion==5 && password.length > 0){
+                password = password.substring(0, password.length - 1);
+                renglon2.textContent =  renglon2.textContent.substring(0, renglon2.textContent.length - 1);
+                columnas[7].innerHTML = '&nbsp;';
+            }else if(opcion == 6){
+                IniciarPantalla();
+            }else if(opcion == 7){
+                if(password.length == 4){
+                    ValidarNIP(password);
+                }
             }
         }break;
 
@@ -213,7 +224,11 @@ function Continuar(){
 }
 
 function Anular(){
-    
+    SeleccionoOpcion(5);
+}
+
+function Cancelar(){
+    SeleccionoOpcion(6);
 }
 
 function RealizaOperacion(operacion){
@@ -308,3 +323,4 @@ function ValidaEgreso(){
         procedimiento = 4;
     }
 }
+
