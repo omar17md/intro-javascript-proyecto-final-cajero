@@ -212,6 +212,10 @@ function Continuar(){
     }
 }
 
+function Anular(){
+    
+}
+
 function RealizaOperacion(operacion){
     switch(operacion){
         case 0:{
