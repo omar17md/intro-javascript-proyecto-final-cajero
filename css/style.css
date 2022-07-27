@@ -22,3 +22,25 @@ body{
 .icono-boton{
     font-size: 2em;
 }
+
+@keyframes anim {
+    0% {
+        background-color: red;
+    }
+
+    /*Amarillo*/
+    100% {
+        background-color: rgb(49, 195, 49);
+    }
+}
+
+.efecto {
+    animation-name: anim;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    background-color: rgb(49, 195, 49);
+}   
+
+.borde-ranura{
+    background-color: red;
+}

@@ -3,6 +3,7 @@
 */
 const renglon1 = document.querySelector('#renglon1');
 const renglon2 = document.querySelector('#renglon2');
+const ranuraTarjeta = document.querySelector('#ranuraTarjeta');
 const columnas = [
     document.querySelector('#columna1-1'),
     document.querySelector('#columna2-1'),
@@ -46,9 +47,13 @@ function VerificarSaldos(){
 }
 
 function InsetarTarjeta(){
-    renglon2.textContent = 'Seleccione una cuenta para comenzar';
-    ConsultarCuentas();
-    procedimiento++;
+    if(procedimiento==0){
+        ranuraTarjeta.classList.add('efecto');
+        ranuraTarjeta.classList.remove('borde-ranura');
+        renglon2.textContent = 'Seleccione una cuenta para comenzar';
+        ConsultarCuentas();
+        procedimiento++;
+    }  
 }
 
 
@@ -164,8 +169,10 @@ function SeleccionoNumero(numero){
         }break;
 
         case 5:{
-            monto += numero;
+            if(monto.length < 3){
+                monto += numero;
             renglon2.textContent = `$ ${monto}`;
+            }
         }break;
     }
 }
@@ -177,6 +184,8 @@ function IniciarPantalla(){
     IDCuenta = -1;
     monto = '';
     numeroOperacion = 0;
+    ranuraTarjeta.classList.add('borde-ranura');
+    ranuraTarjeta.classList.remove('efecto');
     renglon1.textContent = 'Bienvenido al Cajero Automatico JS';
     renglon2.textContent = 'Inserte su tarjeta para comenzar';
     renglon1.style.color = 'black';
