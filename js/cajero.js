@@ -38,9 +38,11 @@ function VerificarSaldos(){
         if(saldo){
             if(Number(cuenta.saldo) != Number(saldo)){
                 cuenta.saldo = saldo;
+                console.log(cuenta.saldo);
             }
         }
     });
+
 }
 
 function InsetarTarjeta(){
@@ -122,7 +124,7 @@ function SeleccionoOpcion(opcion){
                 CargarPantallaInicio();
                 procedimiento = 3;
             }else if(opcion == 7){
-                if(numeroOperacion ==1 ){
+                if(numeroOperacion == 1){
                     ValidarIngreso();
                 }else{
                     ValidaEgreso();
@@ -138,7 +140,12 @@ function SeleccionoOpcion(opcion){
             }else if(opcion==7){
                 monto = '';
                 LimpiarOpciones();
-                RealizaOperacion(1);
+                if(numeroOperacion == 1){
+                    RealizaOperacion(1);
+                }else{
+                    RealizaOperacion(2);
+                }
+               
             }
         }break;
     }
@@ -216,7 +223,7 @@ function ValidarNIP(NIP){
 
 function CargarPantallaInicio(){
     LimpiarOpciones();
-
+    monto = '';
     renglon1.textContent = `Bienvenido ${cuentas[IDCuenta].nombre} con el numero de cuenta ${cuentas[IDCuenta].numeroCuenta}`;
     renglon1.style.color = 'black';
     renglon2.textContent = 'Seleccione la operación a realizar'
@@ -262,6 +269,7 @@ function RealizaOperacion(operacion){
             columnas[7].style.color = 'green';
             procedimiento = 5;
             numeroOperacion = 1;
+            monto = '';
         }break;
 
         case 2:{
@@ -277,6 +285,7 @@ function RealizaOperacion(operacion){
             columnas[7].style.color = 'green';
             procedimiento = 5;
             numeroOperacion = 2;
+            monto = '';
         }break;
 
         case 6:{
@@ -286,6 +295,7 @@ function RealizaOperacion(operacion){
 }
 
 function ValidarIngreso(){
+    console.log(monto);
     if(Number(monto) + cuentas[IDCuenta].saldo > 990){
         LimpiarOpciones();
         renglon1.textContent = 'El monto ingresado más su saldo actual supera los $990';
@@ -293,9 +303,11 @@ function ValidarIngreso(){
         renglon2.innerHTML = '&nbsp;';
         columnas[6].textContent = 'Volver al inicio';
         columnas[7].textContent = 'Ingresar otro monto';
+        monto = '';
         procedimiento = 6;
     }else if(monto == ''){
         columnas[0].textContent = 'Ingrese un Numero Mayor a 0';
+        monto = '';
         columnas[0].style.color = 'red';
     }else{
         cuentas[IDCuenta].saldo += Number(monto);
@@ -310,6 +322,7 @@ function ValidarIngreso(){
 };
 
 function ValidaEgreso(){
+    console.log(monto);
     if(cuentas[IDCuenta].saldo - Number(monto) < 10){
         LimpiarOpciones();
         renglon1.textContent = 'Su saldo actual menos el monto ingresado no supera los $10';
@@ -317,9 +330,11 @@ function ValidaEgreso(){
         renglon2.innerHTML = '&nbsp;';
         columnas[6].textContent = 'Volver al inicio';
         columnas[7].textContent = 'Ingresar otro monto a retirar';
+        monto = '';
         procedimiento = 6;
     }else if(monto == ''){
         columnas[0].textContent = 'Ingrese un Numero Mayor a 0';
+        monto = '';
         columnas[0].style.color = 'red';
     }else{
         cuentas[IDCuenta].saldo -= Number(monto);
