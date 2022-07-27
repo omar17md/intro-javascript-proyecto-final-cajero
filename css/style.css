@@ -11,6 +11,10 @@ body{
     width: 100px;
 }
 
+.fondo-teclado{
+    background-image: url('../img/fondo-teclado.jpg');
+}
+
 .tecla-funcion{
     width: 170px;
 }

@@ -24,12 +24,25 @@ let monto = '';
     ************** Eventos
 */
 document.addEventListener('DOMContentLoaded', () => {
-   
+   VerificarSaldos();
 });
 
 /*
     ************** Funciones
 */
+function VerificarSaldos(){
+    let saldo = 0;
+    cuentas.forEach(cuenta => {
+        saldo = localStorage.getItem(cuenta.numeroCuenta);
+       
+        if(saldo){
+            if(Number(cuenta.saldo) != Number(saldo)){
+                cuenta.saldo = saldo;
+            }
+        }
+    });
+}
+
 function InsetarTarjeta(){
     renglon2.textContent = 'Seleccione una cuenta para comenzar';
     ConsultarCuentas();
@@ -214,13 +227,7 @@ function CargarPantallaInicio(){
 }
 
 function Continuar(){
-    switch(procedimiento){
-        case 2:{            
-            if(password.length == 4){
-                ValidarNIP(password);
-            }
-        }break;
-    }
+    SeleccionoOpcion(7);
 }
 
 function Anular(){
@@ -292,6 +299,7 @@ function ValidarIngreso(){
         columnas[0].style.color = 'red';
     }else{
         cuentas[IDCuenta].saldo += Number(monto);
+        localStorage.setItem(cuentas[IDCuenta].numeroCuenta, cuentas[IDCuenta].saldo);
         LimpiarOpciones();
         renglon1.textContent = 'Tú nuevo saldo es: ';
         renglon2.textContent = `$ ${cuentas[IDCuenta].saldo}`;
@@ -304,7 +312,7 @@ function ValidarIngreso(){
 function ValidaEgreso(){
     if(cuentas[IDCuenta].saldo - Number(monto) < 10){
         LimpiarOpciones();
-        renglon1.textContent = 'El monto ingresado menos su saldo actual no supera los $10';
+        renglon1.textContent = 'Su saldo actual menos el monto ingresado no supera los $10';
         renglon1.style.color = 'red';
         renglon2.innerHTML = '&nbsp;';
         columnas[6].textContent = 'Volver al inicio';
@@ -315,6 +323,7 @@ function ValidaEgreso(){
         columnas[0].style.color = 'red';
     }else{
         cuentas[IDCuenta].saldo -= Number(monto);
+        localStorage.setItem(cuentas[IDCuenta].numeroCuenta, cuentas[IDCuenta].saldo);
         LimpiarOpciones();
         renglon1.textContent = 'Tú nuevo saldo es: ';
         renglon2.textContent = `$ ${cuentas[IDCuenta].saldo}`;
