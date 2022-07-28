@@ -23,7 +23,7 @@ body{
     font-size: 2em;
 }
 
-@keyframes anim {
+@keyframes animacion {
     0% {
         background-color: red;
     }
@@ -35,7 +35,7 @@ body{
 }
 
 .efecto {
-    animation-name: anim;
+    animation-name: animacion;
     animation-duration: 2s;
     animation-iteration-count: 1;
     background-color: rgb(49, 195, 49);
@@ -43,4 +43,28 @@ body{
 
 .borde-ranura{
     background-color: red;
+}
+
+.tarjeta{
+    height: 400px;
+    width: 700px;
+    transition: all 2s ease-in-out;
+    -webkit-transition: all 2s ease-in-out; /** Chrome & Safari **/
+    -moz-transition: all 2s ease-in-out; /** Firefox **/
+    -o-transition: all 2s ease-in-out; /** Opera **/
+}
+
+
+.move-up {
+    transform: translate(0,-115px);
+    -webkit-transform: translate(0,-115px);
+    -o-transform: translate(0,-115px); 
+    -moz-transform: translate(0,-115px);
+}
+
+.move-down {
+    transform: translate(0,45px);
+    -webkit-transform: translate(0,45px);
+    -o-transform: translate(0,45px); 
+    -moz-transform: translate(0,45px);
 }

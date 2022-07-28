@@ -4,6 +4,8 @@
 const renglon1 = document.querySelector('#renglon1');
 const renglon2 = document.querySelector('#renglon2');
 const ranuraTarjeta = document.querySelector('#ranuraTarjeta');
+const tarjeta = document.querySelector('#tarjeta');
+const mensajeTarjeta = document.querySelector('#mensaje-tarjeta');
 const columnas = [
     document.querySelector('#columna1-1'),
     document.querySelector('#columna2-1'),
@@ -39,7 +41,6 @@ function VerificarSaldos(){
         if(saldo){
             if(Number(cuenta.saldo) != Number(saldo)){
                 cuenta.saldo = saldo;
-                console.log(cuenta.saldo);
             }
         }
     });
@@ -50,6 +51,9 @@ function InsetarTarjeta(){
     if(procedimiento==0){
         ranuraTarjeta.classList.add('efecto');
         ranuraTarjeta.classList.remove('borde-ranura');
+        tarjeta.classList.remove('move-down');
+        tarjeta.classList.add('move-up');
+        mensajeTarjeta.textContent = '';
         renglon2.textContent = 'Seleccione una cuenta para comenzar';
         ConsultarCuentas();
         procedimiento++;
@@ -171,7 +175,7 @@ function SeleccionoNumero(numero){
         case 5:{
             if(monto.length < 3){
                 monto += numero;
-            renglon2.textContent = `$ ${monto}`;
+                renglon2.textContent = `$ ${monto}`;
             }
         }break;
     }
@@ -186,10 +190,12 @@ function IniciarPantalla(){
     numeroOperacion = 0;
     ranuraTarjeta.classList.add('borde-ranura');
     ranuraTarjeta.classList.remove('efecto');
+    tarjeta.classList.remove('move-up');
+    tarjeta.classList.add('move-down');
     renglon1.textContent = 'Bienvenido al Cajero Automatico JS';
     renglon2.textContent = 'Inserte su tarjeta para comenzar';
     renglon1.style.color = 'black';
-
+    mensajeTarjeta.textContent = 'Da click en la tarjeta para insertar';
     LimpiarOpciones();
 }
 
@@ -304,8 +310,8 @@ function RealizaOperacion(operacion){
 }
 
 function ValidarIngreso(){
-    console.log(monto);
-    if(Number(monto) + cuentas[IDCuenta].saldo > 990){
+    let saldo = Number(cuentas[IDCuenta].saldo);
+    if(Number(monto) + saldo > 990){
         LimpiarOpciones();
         renglon1.textContent = 'El monto ingresado más su saldo actual supera los $990';
         renglon1.style.color = 'red';
@@ -319,7 +325,7 @@ function ValidarIngreso(){
         monto = '';
         columnas[0].style.color = 'red';
     }else{
-        cuentas[IDCuenta].saldo += Number(monto);
+        cuentas[IDCuenta].saldo = saldo + Number(monto);
         localStorage.setItem(cuentas[IDCuenta].numeroCuenta, cuentas[IDCuenta].saldo);
         LimpiarOpciones();
         renglon1.textContent = 'Tú nuevo saldo es: ';
@@ -331,8 +337,8 @@ function ValidarIngreso(){
 };
 
 function ValidaEgreso(){
-    console.log(monto);
-    if(cuentas[IDCuenta].saldo - Number(monto) < 10){
+    let saldo = Number(cuentas[IDCuenta].saldo);
+    if(saldo - Number(monto) < 10){
         LimpiarOpciones();
         renglon1.textContent = 'Su saldo actual menos el monto ingresado no supera los $10';
         renglon1.style.color = 'red';
@@ -346,7 +352,7 @@ function ValidaEgreso(){
         monto = '';
         columnas[0].style.color = 'red';
     }else{
-        cuentas[IDCuenta].saldo -= Number(monto);
+        cuentas[IDCuenta].saldo = saldo - Number(monto);
         localStorage.setItem(cuentas[IDCuenta].numeroCuenta, cuentas[IDCuenta].saldo);
         LimpiarOpciones();
         renglon1.textContent = 'Tú nuevo saldo es: ';
